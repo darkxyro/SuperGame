@@ -46,7 +46,12 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
+# =========================
 # Unwanted Builds Files
+# =========================
+
+
+# Windows Files
 *.cbp
 *.script
 *.o
