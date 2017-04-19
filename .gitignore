@@ -51,7 +51,7 @@ Temporary Items
 # =========================
 
 
-# Windows Files
+# Windows Code::Blocks Files
 *.cbp
 *.script
 *.o
