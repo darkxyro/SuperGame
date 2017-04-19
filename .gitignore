@@ -45,3 +45,12 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+
+# Unwanted Builds Files
+*.cbp
+*.script
+*.o
+*.exe
+*.depend
+*.layout
+
