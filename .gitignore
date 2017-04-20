@@ -58,4 +58,4 @@ Temporary Items
 *.exe
 *.depend
 *.layout
-
+*.cscope_file_list

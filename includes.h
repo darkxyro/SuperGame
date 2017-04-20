@@ -8,6 +8,9 @@
 #include <SDL_net.h>
 #include <iostream>
 
+#include "include/respath.h"
+#include "include/errlog.h"
+
 using namespace std;
 
 
