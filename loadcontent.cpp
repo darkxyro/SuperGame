@@ -1,5 +1,6 @@
 #include "game.h"
 
+using namespace std;
 
 /**
 *loads required content at startup
@@ -8,30 +9,29 @@
 bool game::LoadContent(){
     cout<<"Resource Path: "<<getResourcePath()<<endl;
     string resPath=getResourcePath();
-    tex=loadTexture(resPath+"image.bmp", renderer);
-    backg=loadTexture(resPath+"background.bmp", renderer);
-    if(tex==NULL||backg==NULL)
+    mTextures.emplace("grass",new WTexture);
+    if(!mTextures["grass"]->loadTexture(renderer,resPath+"grass.png")){
+        mTextures["grass"]->free();
         return false;
+    }
+    /*mTextures.push_back(tex);
+    if(!mTextures[1].loadTexture(renderer,resPath+"image.png")){
+        mTextures[1].free();
+        return false;
+    }*/
     return true;
 }
+
 
 
 /**
 * loads a BMP image into a texture on the rendering device
 * @param file The BMP image file to load
-* @param ren The renderer to load the texture onto
 * @return the loaded texture, or nullptr if something went wrong.
 */
-SDL_Texture* game::loadTexture(const string &file, SDL_Renderer* ren){
-    SDL_Texture* tex=NULL;
-    SDL_Surface* bmp=SDL_LoadBMP(file.c_str());
-    if(bmp!=NULL){
-        tex=SDL_CreateTextureFromSurface(ren, bmp);
-        SDL_FreeSurface(bmp);
-        if(tex==NULL)
-            logSDLError(cout,"CreateTextureFromSurface");
-    }
-    else
-        logSDLError(cout,"LoadBMP");
+SDL_Texture* game::loadTexture(const string &file){
+    SDL_Texture* tex=IMG_LoadTexture(renderer,file.c_str());
+    if(tex==NULL)
+        logSDLError(cout,"IMG_LoadTexture");
     return tex;
 }

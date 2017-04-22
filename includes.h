@@ -7,11 +7,15 @@
 #include <SDL_mixer.h>
 #include <SDL_net.h>
 #include <iostream>
+#include <string>
+#include <unordered_map>
 
 #include "include/respath.h"
 #include "include/errlog.h"
 
-using namespace std;
+#include "include/wTexture.h"
+#include "include/FPS.h"
+
 
 
 #endif // INCLUDES_H_INCLUDED
