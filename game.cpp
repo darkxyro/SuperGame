@@ -6,6 +6,7 @@ game::game(){
     window=NULL;
     Running=true;
     useClip=0;
+    mPaused=false;
 }
 
 

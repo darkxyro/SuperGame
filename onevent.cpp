@@ -10,16 +10,15 @@ void game::OnEvent(SDL_Event* Event){
             Running=false;
             break;
         case SDLK_UP:
-            useClip=0;
             break;
         case SDLK_RIGHT:
-            useClip=1;
             break;
         case SDLK_DOWN:
-            useClip=2;
             break;
         case SDLK_LEFT:
-            useClip=3;
+            break;
+        case SDLK_p:
+            mPaused=!mPaused;
             break;
         }
         break;

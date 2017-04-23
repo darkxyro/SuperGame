@@ -6,5 +6,8 @@ using namespace std;
 *@return true if successful, else false
 */
 bool game::OnLoop(){
+    if(!mPaused){
+        mFpsCounter.updateClock();
+    }
     return true;
 }
