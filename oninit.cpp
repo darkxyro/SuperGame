@@ -2,10 +2,8 @@
 
 using namespace std;
 
-/**
-*initializes the program, calls LoadContent at the end
-*@return true if successful, else false
-*/
+
+
 bool game::OnInit(){
     if(SDL_Init(SDL_INIT_EVERYTHING)<0){
         logSDLError(cout,"SDL_Init");

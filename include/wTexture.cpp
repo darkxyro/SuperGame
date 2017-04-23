@@ -78,13 +78,41 @@ bool WTexture::loadTexture(SDL_Renderer* renderer,const string &file){
     return true;
 }
 
-void WTexture::render(SDL_Renderer* renderer,int x,int y,SDL_Rect* Clip,double angle,SDL_Point* center,SDL_RendererFlip flip){
-    SDL_Rect rect={x,y,mWidth,mHeight};
-    SDL_RenderCopyEx(renderer,mTexture,Clip,&rect,angle,center,flip);
+void WTexture::render(SDL_Renderer* renderer,int x,int y,SDL_Rect* Camera,SDL_Rect* Clip,double angle,SDL_Point* center,SDL_RendererFlip flip){
+    SDL_Rect pos={x,y,mWidth,mHeight};
+    bool render=true;
+    if(Camera!=NULL){
+        if((pos.x<Camera->x)&&(pos.x+pos.w<Camera->x))
+            render=false;
+        if((pos.x>Camera->x+Camera->w)&&(pos.x+pos.w>Camera->x+Camera->w))
+            render=false;
+        if((pos.y<Camera->y)&&(pos.y+pos.h<Camera->y))
+            render=false;
+        if((pos.y>Camera->y+Camera->h)&&(pos.y+pos.h>Camera->y+Camera->h))
+            render=false;
+        pos.x-=Camera->x;
+        pos.y-=Camera->y;
+    }
+    if(render)
+        SDL_RenderCopyEx(renderer,mTexture,Clip,&pos,angle,center,flip);
 }
 
-void WTexture::render(SDL_Renderer* renderer,SDL_Rect* pos,SDL_Rect* Clip,double angle,SDL_Point* center,SDL_RendererFlip flip){
-    SDL_RenderCopyEx(renderer,mTexture,Clip,pos,angle,center,flip);
+void WTexture::render(SDL_Renderer* renderer,SDL_Rect* pos,SDL_Rect* Camera,SDL_Rect* Clip,double angle,SDL_Point* center,SDL_RendererFlip flip){
+    bool render=true;
+    if(Camera!=NULL){
+        if((pos->x<Camera->x)&&(pos->x+pos->w<Camera->x))
+            render=false;
+        if((pos->x>Camera->x+Camera->w)&&(pos->x+pos->w>Camera->x+Camera->w))
+            render=false;
+        if((pos->y<Camera->y)&&(pos->y+pos->h<Camera->y))
+            render=false;
+        if((pos->y>Camera->y+Camera->h)&&(pos->y+pos->h>Camera->y+Camera->h))
+            render=false;
+        pos->x-=Camera->x;
+        pos->y-=Camera->y;
+    }
+    if(render)
+        SDL_RenderCopyEx(renderer,mTexture,Clip,pos,angle,center,flip);
 }
 
 int WTexture::getWidth(){

@@ -7,13 +7,11 @@ game::game(){
     Running=true;
     useClip=0;
     mPaused=false;
+    Camera={0,0,SCREEN_WIDTH,SCREEN_HEIGHT};
 }
 
 
-/**
-*central loop calling all other functions
-*@return 0 if successful, -1 on fail
-*/
+
 int game::OnExecute(){
     if(OnInit()==false){
         return -1;
@@ -36,11 +34,6 @@ int game::OnExecute(){
 
 
 
-
-/**
-*initial main function
-*@return 0 if successful, -1 on fail
-*/
 int main(int argc, char* argv[]){
     game SuperGame;
     return SuperGame.OnExecute();

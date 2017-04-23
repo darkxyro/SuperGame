@@ -15,8 +15,8 @@ class WTexture{
         bool loadFromText(SDL_Renderer* renderer,const std::string message,SDL_Color col,int fontSize,const std::string fontFileName);
         bool loadFromText(SDL_Renderer* renderer,const std::string message,SDL_Color col,TTF_Font* font);
         void free();
-        void render(SDL_Renderer* renderer,SDL_Rect* pos,SDL_Rect* Clip=NULL,double angle=0.0,SDL_Point* center=NULL,SDL_RendererFlip flip=SDL_FLIP_NONE);
-        void render(SDL_Renderer* renderer,int x,int y,SDL_Rect* Clip=NULL,double angle=0.0,SDL_Point* center=NULL,SDL_RendererFlip flip=SDL_FLIP_NONE);
+        void render(SDL_Renderer* renderer,SDL_Rect* pos,SDL_Rect* Camera=NULL,SDL_Rect* Clip=NULL,double angle=0.0,SDL_Point* center=NULL,SDL_RendererFlip flip=SDL_FLIP_NONE);
+        void render(SDL_Renderer* renderer,int x,int y,SDL_Rect* Camera=NULL,SDL_Rect* Clip=NULL,double angle=0.0,SDL_Point* center=NULL,SDL_RendererFlip flip=SDL_FLIP_NONE);
         int getWidth();
         int getHeight();
 };
